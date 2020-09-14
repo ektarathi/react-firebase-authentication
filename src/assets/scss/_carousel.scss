@@ -1,0 +1,50 @@
+.carousel {
+    width: 100%;
+}
+
+.slick-prev, .slick-next {
+    &:before {
+        color: #000 !important;
+    }
+}
+
+.slick-dots {
+    bottom: 18px !important;
+}
+
+.slick-slide img {
+    max-width: 100%;
+}
+
+.carousel-block {
+    background-size: cover;
+    height: 350px;
+
+    &__content {
+        position: absolute;
+        padding: 100px;
+        top: 0;
+        bottom: 8px;
+        width: 60%;
+        text-align: left;
+
+        &--title {
+            color: #fff;
+            padding: 0;
+            font-size: 30px;
+            margin-top: 100px;
+        }
+
+        &--subtitle {
+            color: #fff;
+            padding: 0;
+            margin-top: 150px;
+        }
+
+        &--button {
+            margin-top: 230px;
+            width: 20%;
+            padding: 0;        
+        }
+    }
+}

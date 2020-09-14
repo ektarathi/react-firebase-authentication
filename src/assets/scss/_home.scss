@@ -1,0 +1,140 @@
+.page-home {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    &__section {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        margin: 45px 0 0;
+
+        &--heading {
+            margin: 0;
+            font-weight: normal;
+            //padding: 0 20px;
+            justify-content: left;
+        }
+
+        &--text {
+            margin: 0;
+            text-align: left;
+            //padding: 20px;
+        }
+
+        &--button {
+            margin: 0;
+            flex-grow: 0;
+            max-width: 35%;
+            flex-basis: 35%;
+
+            @media screen and (max-width: 767px) {
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+
+        }
+
+        &--image {
+            background-repeat: no-repeat;
+            background-color: #fff;
+            background-size: cover;
+            background-position: top;
+            background-image: url('../images/homepage_bottomImage.jpg');
+            padding: 50px;
+        }
+
+        h2 {
+            padding-left: 12px;
+        }
+
+        h2, p {
+            width: 100%;
+        }
+    }
+
+    &__block {
+        padding: 12px;
+        width: 30%;
+        float: left;
+        margin: 15px 0 20px;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin: 0;
+
+            &:last-child {
+                margin-bottom: 20px;
+            }
+        }
+
+        p {
+            text-align: left;
+        }
+    }
+
+    &__contactUs {
+        width: 15%;
+        margin: 0 auto 20px;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin: 0;
+        }
+
+    }
+
+    &__section {
+        &--leftSection {
+            flex-grow: 0;
+            max-width: 50%;
+            flex-basis: 50%;
+
+            @media screen and (max-width: 767px) {
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+
+            & > div, p {
+                padding: 12px;
+            }
+
+            &-dark {
+                background-color: #635c59;
+                color: #fff;
+                text-align: left;
+
+                & > div, p {
+                    padding: 12px;
+                }
+            }
+        }
+
+        &--rightSection {
+            flex-grow: 0;
+            max-width: 50%;
+            flex-basis: 50%;
+
+            @media screen and (max-width: 767px) {
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+
+            &-image {
+                background-image: url('../images/homepage_shutterstock.jpg');
+		        background-repeat: no-repeat;
+		        background-size: cover;
+                background-position: center;
+                height: 100%;
+                
+                @media screen and (max-width: 767px) {
+                   min-height: 300px;
+                }
+
+            }
+            
+        }
+    }
+}

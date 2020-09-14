@@ -1,0 +1,108 @@
+.page-contact {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 100vh;
+
+    &__leftSection {
+        flex-grow: 0;
+        max-width: 50%;
+        flex-basis: 50%;
+        padding-top: 40px;
+        @media screen and (max-width: 767px ){
+            max-width: 100%;
+            flex-basis: 100%;
+        }
+    }
+
+    &__rightSection {
+        flex-grow: 0;
+        max-width: 50%;
+        flex-basis: 50%;
+        @media screen and (max-width: 767px ){
+            display: none;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        box-shadow: none;
+
+        &--heading {
+            margin-bottom: 20px;
+            h1 {
+                font-weight: normal;
+            }
+        }
+
+        &--text {
+            margin: 0;
+        }
+    }
+
+    &__success {
+        background-color:#e9f4da;
+        color: #000;
+        text-align: center;
+        display: block;
+        padding: 70px;
+        margin: 25px 0;
+        img {
+            margin-bottom: 10px;
+        }
+        p {
+            color: #9ca393;
+        }
+    }
+
+    &__image {
+        background-repeat: no-repeat;
+        background-color: #fff;
+        background-size: cover;
+        background-position: center;
+        background-image: url('../images/Img_Contact.png');
+        height: 100%;
+        width: 90%;
+        margin: auto;
+    }
+    
+    &__form {
+        margin-top: 8px;
+
+        &--block {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+
+            &-leftContent {
+                width: 48%;
+                float: left;
+                margin-right: 2%;
+                p {
+                    margin: 0;
+                }
+            }
+            &-rightContent {
+                width: 49%;
+                float: left;
+                p {
+                    margin: 0;
+                    float: left;
+                }
+            }
+        }
+
+        &--textarea {
+            width: 100%;
+            font-size: .9em;
+            
+            &-text {
+                color: #bcbfc5;
+            }
+        }
+    }
+}

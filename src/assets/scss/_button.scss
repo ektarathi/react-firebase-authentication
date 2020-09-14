@@ -1,0 +1,64 @@
+.button {
+    width: 99%;
+    padding: 12px;
+    outline: 0;
+    border: 0;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+
+    &__addNumberButton {
+        color: #2f7bb8;
+        background-color: #eff7ff;
+        font-weight: bold;
+
+        &:hover {
+            color: #eff7ff;
+            background-color: #2f7bb8;
+        }
+    }
+
+    &__loginButton {
+        color: #fff;
+        background-color: #2f7bb8;
+        margin: 16px 0px 16px;
+        background-size: 26px 48px;
+        background-image: url("../images/Icon_Submit.svg");
+        background-repeat: no-repeat;
+        background-position: 15px 0;
+
+        &:hover {
+            color: #fff;
+            background-color: #2f7bb8;
+        }
+    }
+
+    &__blueButton {
+        color: #fff;
+        background-color: #2f7bb8;
+        margin: 0;
+
+        &:hover {
+            color: #fff;
+            background-color: #2f7bb8;
+        }
+
+        @media screen and (max-width: 767px) {
+            margin-bottom: 32px;
+        }
+
+    }
+
+    &__whiteButton {
+        color: #2f7bb8;
+        background-color: #eff7ff;
+        font-weight: bold;
+
+        &:hover {
+            color: #eff7ff;
+            background-color: #2f7bb8;
+        }
+    }
+
+}
