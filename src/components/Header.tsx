@@ -24,11 +24,9 @@ const Header: React.SFC<HeaderProps> = () => {
 	const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 	React.useEffect(() => {
 		firebase.auth().onAuthStateChanged((user: any) => {
-            console.log('got the user: ',user);
             if (user) { setIsLoggedIn(true);} 
             else { setIsLoggedIn(false)}
         })
-        console.log('isLoggedin values:',isLoggedIn);
 	})
 
 	const handleLogin = () => {
@@ -38,7 +36,6 @@ const Header: React.SFC<HeaderProps> = () => {
 	const handleLogout = () => {
 		firebase.auth().signOut().then(function() {
 			// Sign-out successful.
-			console.log('User Logged Out!');
 			navigate(`/`);
 		}).catch(function(error:any) {
 			// An error happened.
