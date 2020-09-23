@@ -4,8 +4,6 @@ import firebase from "../../firebaseConfig.js";
 import { useDispatch } from "react-redux";
 import { SuccessActions } from "../../redux/actions/successAction";
 import TextArea from "./TextArea";
-import FormButton from "./FormButton";
-import AddressDetails from './AddressDetails';
 export interface FormProps {
 }
 
@@ -39,10 +37,6 @@ const Form: React.SFC<FormProps> = () => {
             console.log(error);
         });
     };
-
-	const addPhoneNumber = () => {
-		console.log("Add Phone Number");
-	};
 
 	const onAddressSelected = () => {
 		setChecked(!checked);

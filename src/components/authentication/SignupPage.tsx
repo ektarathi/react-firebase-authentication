@@ -41,7 +41,6 @@ const SignupPage: React.SFC<SignupPageProps> = () => {
     };
 
     const googleSignIn = () => {
-        console.log('login with google');
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
             // The signed-in user info.
