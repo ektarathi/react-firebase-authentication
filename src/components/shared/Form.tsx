@@ -5,31 +5,35 @@ import { useDispatch } from "react-redux";
 import { SuccessActions } from "../../redux/actions/successAction";
 import TextArea from "./TextArea";
 import FormButton from "./FormButton";
+import AddressDetails from './AddressDetails';
 export interface FormProps {
 }
 
 const Form: React.SFC<FormProps> = () => {
+	const [checked, setChecked] = React.useState(false);
     const successDispatch = useDispatch<React.Dispatch<SuccessActions>>();
 	const { register, handleSubmit, errors } = useForm({
 		shouldFocusError: true,
 	});
-    
+	
 	const onSubmit = (formData: any, e: any) => {
+		console.log('jhjh', formData);
 		e.preventDefault();
         successDispatch({ type: "SET_SUCCESS", name: formData.fullName, phoneNumber: formData.phoneNumber });    
         var firestore = firebase.firestore();
         const db = firestore.collection("contactFormData");
         let userName = formData.fullName;
         let userEmail = formData.email;
-        let userNumber = formData.phoneNumber;
+		let userNumber = formData.phoneNumber;
+		let userAddress = formData.address;
         
         //Access Database
         db.doc().set({
             name: userName,
             email: userEmail,
-            number: userNumber
+			number: userNumber,
+			address: userAddress
         }).then(function(){
-            console.log("Data Saved");
             formData.fullName = "";
         }).catch(function(error: any){
             console.log(error);
@@ -40,6 +44,33 @@ const Form: React.SFC<FormProps> = () => {
 		console.log("Add Phone Number");
 	};
 
+	const onAddressSelected = () => {
+		setChecked(!checked);
+	}
+	
+	const addAddressDetails = () => {
+		return (
+			<div className="page-contact__form page-contact__form--block">
+				<label htmlFor="address-details" className="formLabel">
+					Address Details
+				</label>
+				<input
+					type="text"
+					name="address"
+					id="address-details"
+					className="formField"
+					ref={register({
+						required: {
+							value: true,
+							message: "Address is required",
+						},
+					})}
+				/>
+				<span className="error">{errors.address && errors.address.message}</span>
+			</div>
+		)
+	}
+	
 	return (
 		<form className="page-contact__form" onSubmit={handleSubmit(onSubmit)}>
 			<div className="page-contact__form page-contact__form--block">
@@ -51,6 +82,7 @@ const Form: React.SFC<FormProps> = () => {
 						type="text"
 						name="fullName"
 						id="name"
+						placeholder="Enter your full name"
 						className="formField"
 						ref={register({
 							required: {
@@ -73,6 +105,7 @@ const Form: React.SFC<FormProps> = () => {
 						type="email"
 						name="email"
 						id="email"
+						placeholder="Eg: test@gmail.com"
 						className="formField"
 						ref={register({
 							required: true,
@@ -91,6 +124,7 @@ const Form: React.SFC<FormProps> = () => {
 					type="text"
 					name="phoneNumber"
 					id="phone-number"
+					placeholder="xxxx-xxx-xxx"
 					className="formField"
 					ref={register({
 						required: {
@@ -105,11 +139,6 @@ const Form: React.SFC<FormProps> = () => {
 				/>
 				<span className="error">{errors.phoneNumber && errors.phoneNumber.message}</span>
 			</div>
-			<FormButton
-				className="button button__addNumberButton"
-				text="Add new phone number"
-				onClick={addPhoneNumber}
-			/>
 			<TextArea />
 			<textarea
 				aria-label="sample text"
@@ -134,6 +163,8 @@ const Form: React.SFC<FormProps> = () => {
 					name="addressDetails"
 					value="true"
 					type="checkbox"
+					checked={checked}
+					onChange={onAddressSelected}
 				/>
                 <span className="checkmark"></span>
 				Add address details
@@ -141,6 +172,7 @@ const Form: React.SFC<FormProps> = () => {
 			{errors.addressDetails && (
 				<p className="error">{errors.addressDetails.message}</p>
 			)}
+			{checked ? addAddressDetails(): ""}
 			<button className="button button__loginButton"> Submit </button>
 		</form>
 	);
