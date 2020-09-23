@@ -8,6 +8,28 @@ import Button from "./shared/FormButton";
 
 export interface CarouselProps {}
 
+function SampleNextArrow(props: any) {
+	const { className, style, onClick } = props;
+	return (
+	  <div
+		className={className}
+		style={{ ...style, display: "block", right: '18px' }}
+		onClick={onClick}
+	  />
+	);
+}
+  
+function SamplePrevArrow(props: any) {
+	const { className, style, onClick } = props;
+	return (
+	  <div
+		className={className}
+		style={{ ...style, display: "block", left: '8px', zIndex: 1000}}
+		onClick={onClick}
+	  />
+	);
+}
+
 const Carousel: React.SFC<CarouselProps> = () => {
 	const [data, setData] = React.useState([] as any);
 	const settings = {
@@ -18,6 +40,8 @@ const Carousel: React.SFC<CarouselProps> = () => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		nextArrow: <SampleNextArrow />,
+      	prevArrow: <SamplePrevArrow />,
 		responsive: [
 			{
 			  breakpoint: 1024,
