@@ -30,8 +30,6 @@ const PasswordReset: React.SFC<PasswordResetProps> = () => {
 		var auth = firebase.auth();
 		var emailAddress = formData.email;
 		auth.sendPasswordResetEmail(emailAddress).then(function() {
-			// Email sent.
-			console.log('Email Sent');
 			navigate(`/`);
 		}).catch(function(error:any) {
 			// An error happened.
