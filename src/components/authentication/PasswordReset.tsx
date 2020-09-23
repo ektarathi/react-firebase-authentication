@@ -32,7 +32,7 @@ const PasswordReset: React.SFC<PasswordResetProps> = () => {
 		auth.sendPasswordResetEmail(emailAddress).then(function() {
 			// Email sent.
 			console.log('Email Sent');
-			navigate(`login`);
+			navigate(`/`);
 		}).catch(function(error:any) {
 			// An error happened.
 			console.log(error);
@@ -73,7 +73,7 @@ const PasswordReset: React.SFC<PasswordResetProps> = () => {
 					</form>
 					
                     <div className="text-center">
-                        <NavLink to={"/login"}>back to sign in page</NavLink>
+                        <NavLink to={"/"}>back to sign in page</NavLink>
                     </div>
 				</div>
 			</div>

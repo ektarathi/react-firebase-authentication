@@ -26,19 +26,39 @@ const SignupPage: React.SFC<SignupPageProps> = () => {
     const { register, handleSubmit, errors } = useForm({
 		shouldFocusError: true,
     });
+    const [error, setError] = React.useState('');
 
 	const onSubmit = (formData: any, e: any) => {
         e.preventDefault();
         let email = formData.email;
         let password = formData.userPassword
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error: any) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+            navigate(`home`);
+        }).catch((error: any) => {
+            setError(error.message);
+            console.log(error, typeof(error));
+        });
+    };
+
+    const googleSignIn = () => {
+        console.log('login with google');
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // The signed-in user info.
+            var user = result.user;
+            navigate(`home`);
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-        })
-        navigate(`/login`);
-    };
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            setError(error.message);
+          });
+    }
 
 	return (
 		<div className="page-signup">
@@ -66,7 +86,7 @@ const SignupPage: React.SFC<SignupPageProps> = () => {
                                 ref={register({
                                     required: {
                                         value: true,
-                                        message: "name is required",
+                                        message: "Name is required",
                                     },
                                     minLength: {
                                         value: 10,
@@ -109,19 +129,19 @@ const SignupPage: React.SFC<SignupPageProps> = () => {
                                     maxLength: 10,
                                 })}
                             />
+                            <span className="error">{errors.userPassword && "Password length is not correct"}</span>
                             <button className="button button__loginButton">
                                 Sign Up
                             </button>
-                            <span className="error">{errors.userPassword && "Password length is not correct"}</span>
                         </div>
 					</form>
 					<p className="text-center">or</p>
-					<button className="button button__whiteButton">
+					<button className="button button__whiteButton" onClick={googleSignIn}>
 						Sign in with Google
 					</button>
                     <p className="text-center">
                         Already have an account?{" "}
-                        <NavLink to={"/login"}>
+                        <NavLink to={"/"}>
                             Sign in here
                         </NavLink>
                     </p>

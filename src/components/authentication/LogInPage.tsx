@@ -26,6 +26,7 @@ const LoginPage: React.SFC<LoginPageProps> = () => {
 		shouldFocusError: true,
     });
     const [error, setError] = React.useState('');
+
 	const onSubmit = (formData: any, e: any) => {
         e.preventDefault();
         let email = formData.email;
@@ -36,6 +37,25 @@ const LoginPage: React.SFC<LoginPageProps> = () => {
             setError(error.message);
             console.log(error, typeof(error));
         });
+    }
+
+    const googleSignIn = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // The signed-in user info.
+            var user = result.user;
+            navigate(`home`);
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            setError(error.message);
+          });
     }
 
 	return (
@@ -92,7 +112,7 @@ const LoginPage: React.SFC<LoginPageProps> = () => {
                         </div>
 					</form>
 					<p className="text-center">or</p>
-					<button className="button button__whiteButton">
+					<button className="button button__whiteButton" onClick={googleSignIn}>
 						Sign in with Google
 					</button>
                     <div className="text-center">
