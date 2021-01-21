@@ -15,7 +15,6 @@ const Form: React.SFC<FormProps> = () => {
 	});
 	
 	const onSubmit = (formData: any, e: any) => {
-		console.log('jhjh', formData);
 		e.preventDefault();
         successDispatch({ type: "SET_SUCCESS", name: formData.fullName, phoneNumber: formData.phoneNumber });    
         var firestore = firebase.firestore();
