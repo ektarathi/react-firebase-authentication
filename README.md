@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Information
+
+A responsive static web application for creating user authentication forms allowing the user to navigate to different sections of web application. The application itself is collaboration of different features and functionality along with 3 party component libraries. Complete list of dependencies installed are available in package.json file.
+
 ## Available Scripts
 
 In the project directory, you can run:
