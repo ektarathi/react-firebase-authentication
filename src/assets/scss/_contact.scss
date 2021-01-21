@@ -49,10 +49,11 @@
         color: #000;
         text-align: center;
         display: block;
-        padding: 70px;
+        padding-bottom: 25px;
         margin: 25px 0;
         img {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 40px;
         }
         p {
             color: #9ca393;
@@ -103,6 +104,10 @@
             &-text {
                 color: #bcbfc5;
             }
+        }
+        textarea {
+            border: 1px solid #cdd0d2;
+            border-radius: 5px;
         }
     }
 }
