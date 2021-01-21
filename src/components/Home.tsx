@@ -3,7 +3,6 @@ import { navigate } from "@reach/router";
 import ListItemText from "./ListItemText";
 import Button from "./shared/FormButton";
 import Carousel from './Carousel';
-import firebase from "../firebaseConfig.js";
 
 export interface HomeProps {
 	path: string;

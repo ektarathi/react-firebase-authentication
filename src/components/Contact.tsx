@@ -10,7 +10,7 @@ export interface ContactProps {
 
 const Contact: React.SFC<ContactProps> = () => {
 	const userData = useSelector((state: AppState) => state.success);
-	
+	console.log(userData.name);
 	return (
 		<div className="page-contact">
 			<div className="page-contact__leftSection">
